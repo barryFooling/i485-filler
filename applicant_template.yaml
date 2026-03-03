@@ -1,0 +1,909 @@
+# ============================================================
+# I-485 Applicant Data Template — Refugee Adjustment of Status
+# Field names verified against USCIS I-485 (edition 09/17/19)
+# ============================================================
+# HOW TO USE:
+#   1. Confirm your PDF's exact field names:
+#        python fill_i485.py list-fields blank_i485.pdf
+#   2. Fill in values below, then run:
+#        python fill_i485.py fill --input blank_i485.pdf \
+#            --data applicant_template.yaml --output filled.pdf
+#
+# CHECKBOXES / RADIO BUTTONS:
+#   Radio button pairs use [0] = Yes/first option, [1] = No/second option.
+#   Set the one you want to true, the other to false.
+#
+# DATES: Use "MM/DD/YYYY" format (include quotes in YAML).
+# ALIEN NUMBER: Include the leading "A" — e.g., "A123456789".
+# ============================================================
+
+# Rename any field key if your PDF version differs from the template.
+field_overrides: {}
+
+# ------------------------------------------------------------------
+# PAGE 1 — Name, A-Number, VOLAG, DOB history
+# (form1[0].#subform[0])
+# ------------------------------------------------------------------
+page1:
+  # Current legal name
+  "form1[0].#subform[0].Pt1Line1_FamilyName[0]": "LAST NAME"
+  "form1[0].#subform[0].Pt1Line1_GivenName[0]": "FIRST NAME"
+  "form1[0].#subform[0].Pt1Line1_MiddleName[0]": ""
+
+  # Other names used — set 1
+  "form1[0].#subform[0].Pt1Line2_FamilyName[0]": ""
+  "form1[0].#subform[0].Pt1Line2_GivenName[0]": ""
+  "form1[0].#subform[0].Pt1Line2_MiddleName[0]": ""
+
+  # Other names used — set 2
+  "form1[0].#subform[0].Pt1Line2a_FamilyName[0]": ""
+  "form1[0].#subform[0].Pt1Line2a_GivenName[0]": ""
+  "form1[0].#subform[0].Pt1Line2a_MiddleName[0]": ""
+
+  # A-Number (on every page header — set it here; repeats handled below)
+  "form1[0].#subform[0].AlienNumber[0]": "A000000000"
+
+  # VOLAG resettlement agency number (if applicable)
+  "form1[0].#subform[0].VolagNumber[0]": ""
+
+  # USCIS Online Account Number
+  "form1[0].#subform[0].USCISOnlineAcctNumber[0]": ""
+
+  # Attorney bar number (leave blank if no attorney)
+  "form1[0].#subform[0].AttorneyStateBarNumber[0]": ""
+
+  # Date of birth (MM/DD/YYYY)
+  "form1[0].#subform[0].Pt1Line3_DOB[0]": "01/01/1990"
+
+  # Has the applicant used other dates of birth? [0]=Yes, [1]=No
+  "form1[0].#subform[0].Pt1Line3_YN[0]": false
+  "form1[0].#subform[0].Pt1Line3_YN[1]": true
+  # If yes, list other DOBs here:
+  "form1[0].#subform[0].Pt1Line3A_OtherDOB[0]": ""
+  "form1[0].#subform[0].Pt1Line3B_OtherDOB[0]": ""
+
+# ------------------------------------------------------------------
+# PAGE 2 — Sex, country of birth/citizenship, I-94, entry info
+# (form1[0].#subform[1])
+# ------------------------------------------------------------------
+page2:
+  "form1[0].#subform[1].AlienNumber[1]": "A000000000"
+
+  # Sex: [0]=Male, [1]=Female
+  "form1[0].#subform[1].Pt1Line6_CB_Sex[0]": false
+  "form1[0].#subform[1].Pt1Line6_CB_Sex[1]": true
+
+  # Place of birth
+  "form1[0].#subform[1].Pt1Line7_CityTownOfBirth[0]": "Addis Ababa"
+  "form1[0].#subform[1].Pt1Line7_CountryOfBirth[0]": "Ethiopia"
+
+  # Country of citizenship / nationality
+  "form1[0].#subform[1].Pt1Line8_CountryofCitizenshipNationality[0]": "Ethiopia"
+
+  # USCIS Online Account Number (repeated)
+  "form1[0].#subform[1].Pt1Line9_USCISAccountNumber[0]": ""
+
+  # Prior A-Number or pending petition — [0]=Yes, [1]=No
+  "form1[0].#subform[1].Pt1Line4_YN[0]": false
+  "form1[0].#subform[1].Pt1Line4_YN[1]": true
+  "form1[0].#subform[1].Pt1Line4_AlienNumber[0]": ""
+
+  # Other A-Numbers — [0]=Yes, [1]=No
+  "form1[0].#subform[1].Pt1Line5_YN[0]": false
+  "form1[0].#subform[1].Pt1Line5_YN[1]": true
+  "form1[0].#subform[1].Pt1Line5A_ANumber[0]": ""
+  "form1[0].#subform[1].Pt1Line5B_ANumber[0]": ""
+
+  # Last arrival info
+  "form1[0].#subform[1].Pt1Line10_DateofArrival[0]": "01/15/2024"
+  "form1[0].#subform[1].Pt1Line10_CityTown[0]": "New York"
+  # State dropdown (two-letter code, e.g. "NY")
+  "form1[0].#subform[1].Pt1Line10_State[0]": "NY"
+  # Last admitted as (write status, e.g. "Refugee")
+  "form1[0].#subform[1].Pt1Line11_Admitted[0]": "Refugee"
+  "form1[0].#subform[1].Pt1Line11_Paroled[0]": ""
+  "form1[0].#subform[1].Pt1Line11_Other[0]": ""
+  # I-94 expiration or "D/S"
+  "form1[0].#subform[1].Pt1Line10_ExpDate[0]": "D/S"
+  # Nonimmigrant visa number and passport info (leave blank if entered as refugee)
+  "form1[0].#subform[1].Pt1Line10_VisaNum[0]": ""
+  "form1[0].#subform[1].Pt1Line10_PassportNum[0]": ""
+  "form1[0].#subform[1].Pt1Line10_Passport[0]": ""
+  "form1[0].#subform[1].Pt1Line10_NonImmDate[0]": ""
+
+# ------------------------------------------------------------------
+# PAGE 3 — Address, I-94, marital/entry status
+# (form1[0].#subform[2])
+# ------------------------------------------------------------------
+page3:
+  "form1[0].#subform[2].AlienNumber[2]": "A000000000"
+
+  # I-94 Arrival-Departure Record Number
+  "form1[0].#subform[2].P1Line12_I94[0]": "12345678901"
+
+  # In care of name (if mail goes to a third party)
+  "form1[0].#subform[2].Part1_Item18_InCareOfName[0]": ""
+
+  # Current U.S. physical address
+  "form1[0].#subform[2].Pt1Line18_CurrentStreetNumberName[0]": "123 Main Street"
+  # Unit type: [0]=Apt, [1]=Ste, [2]=Flr
+  "form1[0].#subform[2].Pt1Line18_CurrentUnit[0]": false
+  "form1[0].#subform[2].Pt1Line18_CurrentUnit[1]": false
+  "form1[0].#subform[2].Pt1Line18_CurrentUnit[2]": false
+  "form1[0].#subform[2].Pt1Line18_CurrentAptSteFlrNumber[0]": "Apt 4B"
+  "form1[0].#subform[2].Pt1Line18_CurrentCityOrTown[0]": "Anytown"
+  # State dropdown
+  "form1[0].#subform[2].Pt1Line18_CurrentState[0]": "CA"
+  "form1[0].#subform[2].Pt1Line18_CurrentZipCode[0]": "90210"
+
+  # Is safe mailing address same as above? [0]=Yes, [1]=No
+  "form1[0].#subform[2].Pt1Line18_YN[0]": true
+  "form1[0].#subform[2].Pt1Line18_YN[1]": false
+  # If different, fill safe mailing address:
+  "form1[0].#subform[2].Pt1Line18_StreetNumberName[0]": ""
+  "form1[0].#subform[2].Pt1Line18US_AptSteFlrNumber[0]": ""
+  "form1[0].#subform[2].Pt1Line18_CityOrTown[0]": ""
+  "form1[0].#subform[2].Pt1Line18_State[0]": ""
+  "form1[0].#subform[2].Pt1Line18_ZipCode[0]": ""
+  "form1[0].#subform[2].Pt1Line18_Date[0]": ""
+
+  # Physical address since (date moved in)
+  # Prior Form I-94 info (if applicable)
+  "form1[0].#subform[2].P1Line12_FamilyName[0]": ""
+  "form1[0].#subform[2].P1Line13_GivenName[0]": ""
+  "form1[0].#subform[2].Pt1Line12_Status[0]": ""
+  "form1[0].#subform[2].Pt1Line12_Date[0]": ""
+
+  # Removal/deportation proceedings — [0]=Yes, [1]=No
+  "form1[0].#subform[2].Pt1Line13_YN[0]": false
+  "form1[0].#subform[2].Pt1Line13_YN[1]": true
+
+  # Prior public charge — [0]=Yes, [1]=No
+  "form1[0].#subform[2].Pt1Line16_YN[0]": false
+  "form1[0].#subform[2].Pt1Line16_YN[1]": true
+
+  # Immigration judge proceedings — [0]=Yes, [1]=No
+  "form1[0].#subform[2].Pt1Line17_YN[0]": false
+  "form1[0].#subform[2].Pt1Line17_YN[1]": true
+
+  # Other status while in the U.S.
+  "form1[0].#subform[2].Pt1Line14_Status[0]": ""
+  "form1[0].#subform[2].Pt1Line15_Date[0]": ""
+
+# ------------------------------------------------------------------
+# PAGE 4 — Address history (last 5 years)
+# (form1[0].#subform[3])
+# ------------------------------------------------------------------
+page4:
+  "form1[0].#subform[3].AlienNumber[3]": "A000000000"
+
+  # Most recent prior address (before current)
+  "form1[0].#subform[3].Pt1Line18_RecentStreetName[0]": "Prior Street 1"
+  "form1[0].#subform[3].Pt1Line18_RecentNumber[0]": ""
+  "form1[0].#subform[3].Pt1Line18_RecentCity[0]": "Addis Ababa"
+  "form1[0].#subform[3].Pt1Line18_RecentState[0]": ""
+  "form1[0].#subform[3].Pt1Line18_RecentPostalCode[0]": ""
+  "form1[0].#subform[3].Pt1Line18_RecentProvince[0]": ""
+  "form1[0].#subform[3].Pt1Line18_RecentCountry[0]": "Ethiopia"
+  "form1[0].#subform[3].Pt1Line18_RecentDateFrom[0]": "01/01/2020"
+  "form1[0].#subform[3].Pt1Line18_RecentDateTo[0]": "01/14/2024"
+
+  # Unit type for recent address: [0]=Apt, [1]=Ste, [2]=Flr
+  "form1[0].#subform[3].Pt1Line18_RecentUnit[0]": false
+  "form1[0].#subform[3].Pt1Line18_RecentUnit[1]": false
+  "form1[0].#subform[3].Pt1Line18_RecentUnit[2]": false
+
+  # Prior address (one more back)
+  "form1[0].#subform[3].Pt1Line18_PriorStreetName[0]": ""
+  "form1[0].#subform[3].Pt1Line18_PriorAddress_Number[0]": ""
+  "form1[0].#subform[3].Pt1Line18_PriorCity[0]": ""
+  "form1[0].#subform[3].Pt1Line18_PriorState[0]": ""
+  "form1[0].#subform[3].Pt1Line18_PriorZipCode[0]": ""
+  "form1[0].#subform[3].Pt1Line18_PriorPostalCode[0]": ""
+  "form1[0].#subform[3].Pt1Line18_PriorProvince[0]": ""
+  "form1[0].#subform[3].Pt1Line18_PriorCountry[0]": ""
+  "form1[0].#subform[3].Pt1Line18_PriorDateFrom[0]": ""
+  "form1[0].#subform[3].Pt1Line18PriorDateTo[0]": ""
+
+  # Lived at any other addresses in last 5 years? [0]=Yes, [1]=No
+  "form1[0].#subform[3].Pt1Line18_last5yrs_YN[0]": false
+  "form1[0].#subform[3].Pt1Line18_last5yrs_YN[1]": true
+
+  # Social Security consent: [0]=Yes (authorize SSA disclosure), [1]=No
+  "form1[0].#subform[3].Pt1Line19_Consent_YN[0]": true
+  "form1[0].#subform[3].Pt1Line19_Consent_YN[1]": false
+  # Has applicant ever had a SSN? [0]=Yes, [1]=No
+  "form1[0].#subform[3].Pt1Line19_YN[0]": false
+  "form1[0].#subform[3].Pt1Line19_YN[1]": true
+  "form1[0].#subform[3].Pt1Line19_SSN[0]": ""
+  # Request new SSN from SSA? [0]=Yes, [1]=No
+  "form1[0].#subform[3].Pt1Line19_SSA_YN[0]": true
+  "form1[0].#subform[3].Pt1Line19_SSA_YN[1]": false
+
+# ------------------------------------------------------------------
+# PAGE 5 — DOB (part 1 cont.) + Part 2 eligibility intro
+# (form1[0].#subform[4])
+# ------------------------------------------------------------------
+page5:
+  "form1[0].#subform[4].AlienNumber[4]": "A000000000"
+
+  # Additional DOB field (for other names / prior identities)
+  "form1[0].#subform[4].Pt1Line2_DOB[0]": ""
+
+  # Prior permanent residence application? [0]=Yes, [1]=No
+  "form1[0].#subform[4].Pt2Line1_YN[0]": false
+  "form1[0].#subform[4].Pt2Line1_YN[1]": true
+  # If yes — prior petitioner info:
+  "form1[0].#subform[4].Pt2Line2_FamilyName[0]": ""
+  "form1[0].#subform[4].Pt2Line2_GivenName[0]": ""
+  "form1[0].#subform[4].Pt2Line2_MiddleName[0]": ""
+  "form1[0].#subform[4].Pt2Line2_AlienNumber[0]": ""
+  "form1[0].#subform[4].Pt2Line2_Date[0]": ""
+  "form1[0].#subform[4].Pt2Line2_Receipt[0]": ""
+  # Prior application type: [0]=I-130 filed on your behalf, [1]=Pending I-130
+  "form1[0].#subform[4].Pt2Line2_CB[0]": false
+  "form1[0].#subform[4].Pt2Line2_CB[1]": false
+
+  # Part 2 — Eligibility category checkboxes (family-based, EB, etc.)
+  # For REFUGEES, leave ALL of these false. Refugee section is on page 7.
+  "form1[0].#subform[4].Pt2Line3a_CB[0]": false    # Immediate relative of USC
+  "form1[0].#subform[4].Pt2Line3a_CB[1]": false    # Family 1st preference
+  "form1[0].#subform[4].Pt2Line3a_CB[2]": false    # Family 2nd preference (2A)
+  "form1[0].#subform[4].Pt2Line3a_CB[3]": false    # Family 2nd preference (2B)
+  "form1[0].#subform[4].Pt2Line3a_CB[4]": false    # Family 3rd preference
+  "form1[0].#subform[4].Pt2Line3a_CB[5]": false    # Family 4th preference
+  "form1[0].#subform[4].Pt2Line3a_CB[6]": false    # (additional family)
+  "form1[0].#subform[4].Pt2Line3a_CB[7]": false
+  "form1[0].#subform[4].Pt2Line3a_CB[8]": false
+  "form1[0].#subform[4].Pt2Line3a_CB[9]": false
+  "form1[0].#subform[4].Pt2Line3a_CB[10]": false
+  "form1[0].#subform[4].Pt2Line3a_CB[11]": false
+  "form1[0].#subform[4].Pt2Line3a_CB[12]": false
+  "form1[0].#subform[4].Pt2Line3a_CB[13]": false
+  "form1[0].#subform[4].Pt2Line3a_CB[14]": false
+
+# ------------------------------------------------------------------
+# PAGE 6 — Employment-based and other eligibility categories
+# (form1[0].#subform[5])
+# ------------------------------------------------------------------
+page6:
+  "form1[0].#subform[5].AlienNumber[5]": "A000000000"
+  # Employment-based — leave all false for refugees
+  "form1[0].#subform[5].Pt2Line3b_CB140[0]": false
+  "form1[0].#subform[5].Pt2Line3b_CB140[1]": false
+  "form1[0].#subform[5].Pt2Line3b_CB140[2]": false
+  "form1[0].#subform[5].Pt2Line3b_CB140[3]": false
+  "form1[0].#subform[5].Pt2Line3b_CB140[4]": false
+  "form1[0].#subform[5].Pt2Line3b_CB140[5]": false
+  "form1[0].#subform[5].Pt2Line3b_CB140[6]": false
+  "form1[0].#subform[5].Pt2Line3b_CB140[7]": false
+  "form1[0].#subform[5].Pt2Line3b_CB526[0]": false
+  "form1[0].#subform[5].Pt2Line3b_CB140Assoc[0]": false
+  "form1[0].#subform[5].Pt2Line3b_CB140Assoc[1]": false
+  "form1[0].#subform[5].Pt2Line3b_CB140Assoc[2]": false
+  # Special immigrant — leave false for refugees
+  "form1[0].#subform[5].Pt2Line3c_CB[0]": false
+  "form1[0].#subform[5].Pt2Line3c_CB[1]": false
+  "form1[0].#subform[5].Pt2Line3c_CB[2]": false
+  "form1[0].#subform[5].Pt2Line3c_CB[3]": false
+  "form1[0].#subform[5].Pt2Line3c_CB[4]": false
+  "form1[0].#subform[5].Pt2Line3c_CB[5]": false
+  "form1[0].#subform[5].Pt2Line3c_CB[6]": false
+  "form1[0].#subform[5].Pt2Line3c_CB[7]": false
+  "form1[0].#subform[5].Pt2Line3c_CB[8]": false
+  "form1[0].#subform[5].Pt2Line3c_CB[9]": false
+  # Relative type (if family-based)
+  "form1[0].#subform[5].Pt2RelativeType_CB[0]": false
+  "form1[0].#subform[5].Pt2RelativeType_CB[1]": false
+  "form1[0].#subform[5].Pt2RelativeType_CB[2]": false
+  "form1[0].#subform[5].Pt2RelativeType_CB[3]": false
+  "form1[0].#subform[5].Pt2Relative_CB[0]": false
+  "form1[0].#subform[5].Pt2Relative_CB[1]": false
+  "form1[0].#subform[5].Pt2Relative_CB[2]": false
+  "form1[0].#subform[5].Pt2Relative_CB[3]": false
+  "form1[0].#subform[5].Pt2Relative_CB[4]": false
+  "form1[0].#subform[5].Pt2Relative_CB[5]": false
+  "form1[0].#subform[5].Pt2Relative_CB[6]": false
+  "form1[0].#subform[5].Pt2Relative_CB[7]": false
+
+# ------------------------------------------------------------------
+# PAGE 7 — REFUGEE / ASYLEE eligibility (Part 2, section 3d)
+# (form1[0].#subform[6])
+# ------------------------------------------------------------------
+page7:
+  "form1[0].#subform[6].AlienNumber[6]": "A000000000"
+
+  # *** REFUGEE ADJUSTMENT (INA § 209(a)) ***
+  # Asylee vs Refugee: [0]=Asylee, [1]=Refugee  ← set [1] true for refugees
+  "form1[0].#subform[6].Pt2Line3d_AsyleeRefugeeCB[0]": false   # Asylee
+  "form1[0].#subform[6].Pt2Line3d_AsyleeRefugeeCB[1]": true    # Refugee ← THIS ONE
+
+  # Date applicant was admitted as a refugee (MM/DD/YYYY)
+  "form1[0].#subform[6].Pt2Line3d_Refugee[0]": "01/15/2024"
+
+  # Asylee date (leave blank for pure refugee cases)
+  "form1[0].#subform[6].Pt2Line3d_Asylum[0]": ""
+
+  # DV Lottery number (leave blank)
+  "form1[0].#subform[6].Pt2Line1g_DV[0]": ""
+  "form1[0].#subform[6].Pt2Line1g_OtherEligibility[0]": ""
+
+  # Additional Part 2 eligibility — leave false for straightforward refugee cases
+  "form1[0].#subform[6].Pt2Line3e_CB[0]": false
+  "form1[0].#subform[6].Pt2Line3e_CB[1]": false
+  "form1[0].#subform[6].Pt2Line3f_CB[0]": false
+  "form1[0].#subform[6].Pt2Line3f_CB[1]": false
+  "form1[0].#subform[6].Pt2Line3f_CB[2]": false
+  "form1[0].#subform[6].Pt2Line3f_CB[3]": false
+  "form1[0].#subform[6].Pt2Line3f_CB[4]": false
+  "form1[0].#subform[6].Pt2Line3f_CB[5]": false
+  "form1[0].#subform[6].Pt2Line3f_CB[6]": false
+  "form1[0].#subform[6].Pt2Line3f_CB[7]": false
+  "form1[0].#subform[6].Pt2Line3g_CB[0]": false
+  "form1[0].#subform[6].Pt2Line3g_CB[1]": false
+  "form1[0].#subform[6].Pt2Line3g_CB[2]": false
+  "form1[0].#subform[6].Pt2Line3g_CB[3]": false
+  "form1[0].#subform[6].Pt2Line3g_CB[4]": false
+  # In removal proceedings? [0]=Yes, [1]=No
+  "form1[0].#subform[6].Pt2Line4_CB[0]": false
+  "form1[0].#subform[6].Pt2Line4_CB[1]": true
+  # Accrue unlawful presence? [0]=Yes, [1]=No
+  "form1[0].#subform[6].Pt2Line5_CB[0]": false
+  "form1[0].#subform[6].Pt2Line5_CB[1]": true
+
+# ------------------------------------------------------------------
+# PAGE 8 — Part 3: Processing information
+# (form1[0].#subform[7])
+# ------------------------------------------------------------------
+page8:
+  "form1[0].#subform[7].AlienNumber[7]": "A000000000"
+
+  # Country where consulate should process (if required):
+  # Part 3, Line 1 — check ONE country:
+  # [0]=Mexico, [1]=Canada, [2]=Other country, [3]=No consulate needed,
+  # [4]=Refugee, [5]=Asylee
+  "form1[0].#subform[7].Pt3Line1_CB[0]": false
+  "form1[0].#subform[7].Pt3Line1_CB[1]": false
+  "form1[0].#subform[7].Pt3Line1_CB[2]": false
+  "form1[0].#subform[7].Pt3Line1_CB[3]": false
+  "form1[0].#subform[7].Pt3Line1_CB[4]": true    # Refugee ← check this
+  "form1[0].#subform[7].Pt3Line1_CB[5]": false
+
+  # Part 4: Prior removal / deportation orders
+  # Ever in deportation / removal proceedings? [0]=Yes, [1]=No
+  "form1[0].#subform[7].Pt4Line1_YN[0]": false
+  "form1[0].#subform[7].Pt4Line1_YN[1]": true
+  "form1[0].#subform[7].Pt4Line2_CityTownOfBirth[0]": ""
+  "form1[0].#subform[7].Pt4Line2_CityTown[0]": ""
+  "form1[0].#subform[7].Pt4Line3_Decision[0]": ""
+  "form1[0].#subform[7].Pt4Line4_Date[0]": ""
+  # Removal order issued? [0]=Yes, [1]=No
+  "form1[0].#subform[7].Pt4Line5_YN[0]": false
+  "form1[0].#subform[7].Pt4Line5_YN[1]": true
+  # Voluntary departure granted? [0]=Yes, [1]=No
+  "form1[0].#subform[7].Pt4Line6_YN[0]": false
+  "form1[0].#subform[7].Pt4Line6_YN[1]": true
+  # Employer names for biometric scheduling
+  "form1[0].#subform[7].Pt4Line7_EmployerName[0]": ""
+  "form1[0].#subform[7].Pt4Line7_EmployerName[1]": ""
+  "form1[0].#subform[7].Pt4Line7_EmployerName[2]": ""
+
+# ------------------------------------------------------------------
+# PAGE 9 — Part 5: Parents; Part 4: Employment address
+# (form1[0].#subform[8])
+# ------------------------------------------------------------------
+page9:
+  "form1[0].#subform[8].AlienNumber[8]": "A000000000"
+
+  # Employer address for biometric appointment
+  "form1[0].#subform[8].Part4Line7_StreetName[0]": ""
+  "form1[0].#subform[8].P4Line7_Number[0]": ""
+  "form1[0].#subform[8].P4Line7_City[0]": ""
+  "form1[0].#subform[8].P4Line7_State[0]": ""
+  "form1[0].#subform[8].P4Line7_ZipCode[0]": ""
+  "form1[0].#subform[8].P4Line7_Country[0]": ""
+  "form1[0].#subform[8].Pt4Line7_DateFrom[0]": ""
+  "form1[0].#subform[8].Pt4Line7_DateTo[0]": ""
+  "form1[0].#subform[8].Part4Line7_StreetName[1]": ""
+  "form1[0].#subform[8].Part4Line8_StreetName[0]": ""
+  "form1[0].#subform[8].P4Line8_Number[0]": ""
+  "form1[0].#subform[8].P4Line8_StreetName[0]": ""
+  "form1[0].#subform[8].P4Line8_City[0]": ""
+  "form1[0].#subform[8].P4Line8_State[0]": ""
+  "form1[0].#subform[8].P4Line8_ZipCode[0]": ""
+  "form1[0].#subform[8].P4Line8_Country[0]": ""
+  "form1[0].#subform[8].Pt4Line8_DateFrom[0]": ""
+  "form1[0].#subform[8].Pt4Line8_DateTo[0]": ""
+  "form1[0].#subform[8].Pt4Line8_EmployerName[0]": ""
+  "form1[0].#subform[8].Pt4Line8_Occupation[0]": ""
+
+  # Part 5: Mother's info
+  "form1[0].#subform[8].Pt5Line1_FamilyName[0]": "MOTHER LAST"
+  "form1[0].#subform[8].Pt5Line1_GivenName[0]": "MOTHER FIRST"
+  "form1[0].#subform[8].Pt5Line1_MiddleName[0]": ""
+
+  # Part 5: Father's info
+  "form1[0].#subform[8].Pt5Line2_FamilyName[0]": "FATHER LAST"
+  "form1[0].#subform[8].Pt5Line2_GivenName[0]": "FATHER FIRST"
+  "form1[0].#subform[8].Pt5Line2_MiddleName[0]": ""
+
+  # Date of marriage (if married)
+  "form1[0].#subform[8].Pt5Line3_DateofBirth[0]": ""
+
+# ------------------------------------------------------------------
+# PAGE 10 — Part 5 continued: Spouse / marital history
+# (form1[0].#subform[9])
+# ------------------------------------------------------------------
+page10:
+  "form1[0].#subform[9].AlienNumber[9]": "A000000000"
+
+  # Mother's birthplace
+  "form1[0].#subform[9].Pt5Line5_CityTownOfBirth[0]": "Addis Ababa"
+  "form1[0].#subform[9].Pt5Line10_CityTownOfBirth[0]": ""
+
+  # Spouse info (if married)
+  "form1[0].#subform[9].Pt5Line6_FamilyName[0]": ""
+  "form1[0].#subform[9].Pt5Line6_GivenName[0]": ""
+  "form1[0].#subform[9].Pt5Line6_MiddleName[0]": ""
+  "form1[0].#subform[9].Pt5Line7_FamilyName[0]": ""
+  "form1[0].#subform[9].Pt5Line7_GivenName[0]": ""
+  "form1[0].#subform[9].Pt5Line7_MiddleName[0]": ""
+  "form1[0].#subform[9].Pt5Line8_DateofBirth[0]": ""
+  "form1[0].#subform[9].Pt5Line8_DateofBirth[1]": ""
+
+  # Spouse in U.S.? [0]=Yes, [1]=No, [2]=N/A
+  "form1[0].#subform[9].Pt5Line2_YNNA[0]": false
+  "form1[0].#subform[9].Pt5Line2_YNNA[1]": false
+  "form1[0].#subform[9].Pt5Line2_YNNA[2]": true
+
+  # Part 6: Marital status
+  # [0]=Single, [1]=Married, [2]=Divorced, [3]=Widowed, [4]=Separated, [5]=Annulled
+  "form1[0].#subform[9].Pt6Line1_MaritalStatus[0]": true    # Single
+  "form1[0].#subform[9].Pt6Line1_MaritalStatus[1]": false
+  "form1[0].#subform[9].Pt6Line1_MaritalStatus[2]": false
+  "form1[0].#subform[9].Pt6Line1_MaritalStatus[3]": false
+  "form1[0].#subform[9].Pt6Line1_MaritalStatus[4]": false
+  "form1[0].#subform[9].Pt6Line1_MaritalStatus[5]": false
+
+  # Number of times married
+  "form1[0].#subform[9].Pt6Line3_TimesMarried[0]": "0"
+
+  # Current/most recent spouse name
+  "form1[0].#subform[9].Pt6Line4_FamilyName[0]": ""
+  "form1[0].#subform[9].Pt6Line4_GivenName[0]": ""
+  "form1[0].#subform[9].Pt6Line4_MiddleName[0]": ""
+  "form1[0].#subform[9].Pt6Line5_AlienNumber[0]": ""
+  "form1[0].#subform[9].Pt6Line7_Country[0]": ""
+
+  # Prior spouse address
+  "form1[0].#subform[9].Part6Line8_StreetName[0]": ""
+  "form1[0].#subform[9].P6Line8_Number[0]": ""
+  "form1[0].#subform[9].P6Line8_City[0]": ""
+  "form1[0].#subform[9].P6Line8_State[0]": ""
+  "form1[0].#subform[9].P6Line8_ZipCode[0]": ""
+  "form1[0].#subform[9].P6Line8_PostalCode[0]": ""
+  "form1[0].#subform[9].P6Line8_Province[0]": ""
+  "form1[0].#subform[9].P6Line8_Country[0]": ""
+
+# ------------------------------------------------------------------
+# PAGE 11 — Part 6: Prior marriages
+# (form1[0].#subform[10])
+# ------------------------------------------------------------------
+page11:
+  "form1[0].#subform[10].AlienNumber[10]": "A000000000"
+
+  # Prior spouse info (most recent prior marriage, if any)
+  "form1[0].#subform[10].Pt6Line12_FamilyName[0]": ""
+  "form1[0].#subform[10].Pt6Line12_GivenName[0]": ""
+  "form1[0].#subform[10].Pt6Line12_MiddleName[0]": ""
+  "form1[0].#subform[10].Pt6Line16_DateofBirth[0]": ""
+  "form1[0].#subform[10].Pt6Line16_DateofBirth[1]": ""
+  "form1[0].#subform[10].Pt6Line10_CityTownOfBirth[0]": ""
+  "form1[0].#subform[10].Pt6Line10_State[0]": ""
+  "form1[0].#subform[10].Pt6Line10_Country[0]": ""
+  "form1[0].#subform[10].Pt6Line14_Country[0]": ""
+  "form1[0].#subform[10].Pt6Line15_Country[0]": ""
+  "form1[0].#subform[10].Pt6Line18_CityTownOfBirth[0]": ""
+  "form1[0].#subform[10].Pt6Line18_State[0]": ""
+  "form1[0].#subform[10].Pt6Line18_Country[0]": ""
+  # How marriage ended: [0]=Divorce, [1]=Death, [2]=Annulment, [3]=Other
+  "form1[0].#subform[10].Pt6Line19_MaritalStatus[0]": false
+  "form1[0].#subform[10].Pt6Line19_MaritalStatus[1]": false
+  "form1[0].#subform[10].Pt6Line19_MaritalStatus[2]": false
+  "form1[0].#subform[10].Pt6Line19_MaritalStatus[3]": false
+  "form1[0].#subform[10].Pt6Line19_HowMarriageEndedOther[0]": ""
+  # Prior prior spouse dates of birth
+  "form1[0].#subform[10].Pt5Line8_DateofBirth[2]": ""
+  "form1[0].#subform[10].Pt5Line8_DateofBirth[3]": ""
+  # Prior spouse birthplace (second slot)
+  "form1[0].#subform[10].Pt6Line10_CityTownOfBirth[1]": ""
+  "form1[0].#subform[10].Pt6Line10_State[1]": ""
+  "form1[0].#subform[10].Pt6Line10_Country[1]": ""
+  # Prior marriage ended how? [0]=Yes, [1]=No
+  "form1[0].#subform[10].Pt6Line11_YN[0]": false
+  "form1[0].#subform[10].Pt6Line11_YN[1]": true
+
+# ------------------------------------------------------------------
+# PAGE 12 — Part 6: Children
+# (form1[0].#subform[11])
+# ------------------------------------------------------------------
+page12:
+  "form1[0].#subform[11].AlienNumber[11]": "A000000000"
+
+  # Total number of children
+  "form1[0].#subform[11].Pt6Line1_TotalChildren[0]": "0"
+
+  # Child 1 (repeat pattern for additional children)
+  "form1[0].#subform[11].Pt7Line2_FamilyName[0]": ""
+  "form1[0].#subform[11].Pt7Line2_GivenName[0]": ""
+  "form1[0].#subform[11].Pt7Line2_MiddleName[0]": ""
+  "form1[0].#subform[11].Pt7Line2_DateofBirth[0]": ""
+  "form1[0].#subform[11].Pt7Line2_Country[0]": ""
+  "form1[0].#subform[11].Pt7Line2_AlienNumber[0]": ""
+  "form1[0].#subform[11].Pt7Line2_Relationship[0]": ""
+  # Child in U.S.? [0]=Yes, [1]=No
+  "form1[0].#subform[11].Pt7Line2_YN[0]": false
+  "form1[0].#subform[11].Pt7Line2_YN[1]": true
+
+  # Child 2
+  "form1[0].#subform[11].Pt7Line3_FamilyName[0]": ""
+  "form1[0].#subform[11].Pt7Line3_GivenName[0]": ""
+  "form1[0].#subform[11].Pt7Line3_MiddleName[0]": ""
+  "form1[0].#subform[11].Pt7Line3_DateofBirth[0]": ""
+  "form1[0].#subform[11].Pt7Line3_Country[0]": ""
+  "form1[0].#subform[11].Pt7Line3_AlienNumber[0]": ""
+  "form1[0].#subform[11].Pt7Line3_Relationship[0]": ""
+  "form1[0].#subform[11].Pt7Line3_YN[0]": false
+  "form1[0].#subform[11].Pt7Line3_YN[1]": true
+
+# ------------------------------------------------------------------
+# PAGE 13 — Part 7: Biographic information + Part 8 start
+# (form1[0].#subform[12])
+# ------------------------------------------------------------------
+page13:
+  "form1[0].#subform[12].AlienNumber[12]": "A000000000"
+
+  # Ethnicity: [0]=Hispanic or Latino, [1]=Not Hispanic or Latino
+  "form1[0].#subform[12].Pt7Line1_Ethnicity[0]": false
+  "form1[0].#subform[12].Pt7Line1_Ethnicity[1]": true
+
+  # Race (check all that apply): [0]=White, [1]=Asian, [2]=Black/African American,
+  #                              [3]=American Indian/Alaska Native, [4]=Native Hawaiian/Pacific Islander
+  "form1[0].#subform[12].Pt7Line2_Race[0]": false   # White
+  "form1[0].#subform[12].Pt7Line2_Race[1]": false   # Asian
+  "form1[0].#subform[12].Pt7Line2_Race[2]": true    # Black/African American
+  "form1[0].#subform[12].Pt7Line2_Race[3]": false   # AIAN
+  "form1[0].#subform[12].Pt7Line2_Race[4]": false   # NHPI
+
+  # Height — dropdown values must exactly match PDF options (digits as strings)
+  "form1[0].#subform[12].Pt7Line3_HeightFeet[0]": "5"
+  "form1[0].#subform[12].Pt7Line3_HeightInches[0]": "8"
+
+  # Weight in pounds (three separate digit fields)
+  "form1[0].#subform[12].Pt7Line4_Weight1[0]": "1"   # hundreds digit
+  "form1[0].#subform[12].Pt7Line4_Weight2[0]": "5"   # tens digit
+  "form1[0].#subform[12].Pt7Line4_Weight3[0]": "0"   # ones digit
+
+  # Eye color: [0]=Black, [1]=Blue, [2]=Brown, [3]=Gray, [4]=Green,
+  #            [5]=Hazel, [6]=Maroon, [7]=Pink, [8]=Unknown/Other
+  "form1[0].#subform[12].Pt7Line5_Eyecolor[0]": false  # Black
+  "form1[0].#subform[12].Pt7Line5_Eyecolor[1]": false  # Blue
+  "form1[0].#subform[12].Pt7Line5_Eyecolor[2]": true   # Brown
+  "form1[0].#subform[12].Pt7Line5_Eyecolor[3]": false
+  "form1[0].#subform[12].Pt7Line5_Eyecolor[4]": false
+  "form1[0].#subform[12].Pt7Line5_Eyecolor[5]": false
+  "form1[0].#subform[12].Pt7Line5_Eyecolor[6]": false
+  "form1[0].#subform[12].Pt7Line5_Eyecolor[7]": false
+  "form1[0].#subform[12].Pt7Line5_Eyecolor[8]": false
+
+  # Hair color: [0]=Bald, [1]=Black, [2]=Blond, [3]=Brown, [4]=Gray,
+  #             [5]=Red/Auburn, [6]=Sandy, [7]=White, [8]=Unknown/Other
+  "form1[0].#subform[12].Pt7Line6_Haircolor[0]": false  # Bald
+  "form1[0].#subform[12].Pt7Line6_Haircolor[1]": true   # Black
+  "form1[0].#subform[12].Pt7Line6_Haircolor[2]": false
+  "form1[0].#subform[12].Pt7Line6_Haircolor[3]": false
+  "form1[0].#subform[12].Pt7Line6_Haircolor[4]": false
+  "form1[0].#subform[12].Pt7Line6_Haircolor[5]": false
+  "form1[0].#subform[12].Pt7Line6_Haircolor[6]": false
+  "form1[0].#subform[12].Pt7Line6_Haircolor[7]": false
+  "form1[0].#subform[12].Pt7Line6_Haircolor[8]": false
+
+  # Part 8, Line 1 — Physical/mental disorder with behavior harmful to others?
+  # [0]=Yes, [1]=No
+  "form1[0].#subform[12].Pt8Line1_YesNo[0]": false
+  "form1[0].#subform[12].Pt8Line1_YesNo[1]": true
+
+  # Organization membership (Part 9 - terrorist/persecutor org)
+  "form1[0].#subform[12].Pt9Line2_Organization1[0]": ""
+  "form1[0].#subform[12].Pt9Line3_CityTownOfBirth[0]": ""
+  "form1[0].#subform[12].Pt9Line3_State[0]": ""
+  "form1[0].#subform[12].Pt9Line3_Country[0]": ""
+  "form1[0].#subform[12].Pt9Line4_FamilyName[0]": ""
+  "form1[0].#subform[12].Pt9Line4_Involvement[0]": ""
+  "form1[0].#subform[12].Pt9Line5_DateFrom[0]": ""
+  "form1[0].#subform[12].Pt9Line5_DateTo[0]": ""
+  "form1[0].#subform[12].Pt9Line6_Organization2[0]": ""
+
+# ------------------------------------------------------------------
+# PAGES 14-18 — Part 8: Inadmissibility questions (all No for refugees)
+# Most refugees answer No to all; adjust only if accurate.
+# (form1[0].#subform[13] through #subform[16])
+# ------------------------------------------------------------------
+page14:
+  "form1[0].#subform[13].AlienNumber[13]": "A000000000"
+  "form1[0].#subform[13].Pt8Line13_YesNo[0]": false
+  "form1[0].#subform[13].Pt8Line13_YesNo[1]": true
+  "form1[0].#subform[13].Pt8Line17_YesNo[0]": false
+  "form1[0].#subform[13].Pt8Line17_YesNo[1]": true
+  "form1[0].#subform[13].Pt8Line18_YesNo[0]": false
+  "form1[0].#subform[13].Pt8Line18_YesNo[1]": true
+  "form1[0].#subform[13].Pt8Line19_YesNo[0]": false
+  "form1[0].#subform[13].Pt8Line19_YesNo[1]": true
+  "form1[0].#subform[13].Pt8Line20_YesNo[0]": false
+  "form1[0].#subform[13].Pt8Line20_YesNo[1]": true
+  "form1[0].#subform[13].Pt8Line22_YesNo[0]": false
+  "form1[0].#subform[13].Pt8Line22_YesNo[1]": true
+  "form1[0].#subform[13].Pt8Line23_YesNo[0]": false
+  "form1[0].#subform[13].Pt8Line23_YesNo[1]": true
+  "form1[0].#subform[13].Pt8Line24a_YesNo[0]": false
+  "form1[0].#subform[13].Pt8Line24a_YesNo[1]": true
+  "form1[0].#subform[13].Pt8Line24b_YesNo[0]": false
+  "form1[0].#subform[13].Pt8Line24b_YesNo[1]": true
+  "form1[0].#subform[13].Pt8Line24c_YesNo[0]": false
+  "form1[0].#subform[13].Pt8Line24c_YesNo[1]": true
+  "form1[0].#subform[13].Pt9Line10_YesNo[0]": false
+  "form1[0].#subform[13].Pt9Line10_YesNo[1]": true
+  "form1[0].#subform[13].Pt9Line11_YesNo[0]": false
+  "form1[0].#subform[13].Pt9Line11_YesNo[1]": true
+  "form1[0].#subform[13].Pt9Line12_YesNo[0]": false
+  "form1[0].#subform[13].Pt9Line12_YesNo[1]": true
+  "form1[0].#subform[13].Pt9Line7_CityTownOfBirth[0]": ""
+  "form1[0].#subform[13].Pt9Line7_State[0]": ""
+  "form1[0].#subform[13].Pt9Line7_Country[0]": ""
+  "form1[0].#subform[13].Pt9Line8_FamilyName[0]": ""
+  "form1[0].#subform[13].Pt9Line8_Involvement[0]": ""
+  "form1[0].#subform[13].Pt9Line9_DateFrom[0]": ""
+  "form1[0].#subform[13].Pt9Line9_DateTo[0]": ""
+
+page15:
+  "form1[0].#subform[14].AlienNumber[14]": "A000000000"
+  "form1[0].#subform[14].Pt8Line25_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line25_YesNo[1]": true
+  "form1[0].#subform[14].Pt8Line26_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line26_YesNo[1]": true
+  "form1[0].#subform[14].Pt8Line27_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line27_YesNo[1]": true
+  "form1[0].#subform[14].Pt8Line28_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line28_YesNo[1]": true
+  "form1[0].#subform[14].Pt8Line29_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line29_YesNo[1]": true
+  "form1[0].#subform[14].Pt8Line30_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line30_YesNo[1]": true
+  "form1[0].#subform[14].Pt8Line31_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line31_YesNo[1]": true
+  "form1[0].#subform[14].Pt8Line32_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line32_YesNo[1]": true
+  "form1[0].#subform[14].Pt8Line33_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line33_YesNo[1]": true
+  "form1[0].#subform[14].Pt8Line34_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line34_YesNo[1]": true
+  "form1[0].#subform[14].Pt8Line35a_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line35a_YesNo[1]": true
+  "form1[0].#subform[14].Pt8Line35b_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line35b_YesNo[1]": true
+  "form1[0].#subform[14].Pt8Line36_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line36_YesNo[1]": true
+  "form1[0].#subform[14].Pt8Line37_YesNo[0]": false
+  "form1[0].#subform[14].Pt8Line37_YesNo[1]": true
+  "form1[0].#subform[14].Pt9Line23_YesNo[0]": false
+  "form1[0].#subform[14].Pt9Line23_YesNo[1]": true
+  "form1[0].#subform[14].Pt9Line24_YesNo[0]": false
+  "form1[0].#subform[14].Pt9Line24_YesNo[1]": true
+
+page16:
+  "form1[0].#subform[15].AlienNumber[15]": "A000000000"
+  "form1[0].#subform[15].Pt8Line38_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line38_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line40_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line40_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line41_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line41_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line42\\.a_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line42\\.a_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line42\\.b_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line42\\.b_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line42c_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line42c_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line42d_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line42d_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line43a_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line43a_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line43b_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line43b_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line43c_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line43c_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line43d_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line43d_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line43e_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line43e_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line43fYesNo[0]": false
+  "form1[0].#subform[15].Pt8Line43fYesNo[1]": true
+  "form1[0].#subform[15].Pt8Line43g_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line43g_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line43h_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line43h_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line43i_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line43i_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line44_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line44_YesNo[1]": true
+  "form1[0].#subform[15].Pt8Line45_YesNo[0]": false
+  "form1[0].#subform[15].Pt8Line45_YesNo[1]": true
+  "form1[0].#subform[15].Pt9Line39_YesNo[0]": false
+  "form1[0].#subform[15].Pt9Line39_YesNo[1]": true
+
+page17:
+  "form1[0].#subform[16].AlienNumber[16]": "A000000000"
+  "form1[0].#subform[16].Pt8Line46_YesNo[0]": false
+  "form1[0].#subform[16].Pt8Line46_YesNo[1]": true
+  "form1[0].#subform[16].Pt8Line47_YesNo[0]": false
+  "form1[0].#subform[16].Pt8Line47_YesNo[1]": true
+  "form1[0].#subform[16].Pt8Line48_YesNo[0]": false
+  "form1[0].#subform[16].Pt8Line48_YesNo[1]": true
+  "form1[0].#subform[16].Pt8Line49_YesNo[0]": false
+  "form1[0].#subform[16].Pt8Line49_YesNo[1]": true
+  "form1[0].#subform[16].Pt8Line50_YesNo[0]": false
+  "form1[0].#subform[16].Pt8Line50_YesNo[1]": true
+  "form1[0].#subform[16].Pt8Line51_YesNo[0]": false
+  "form1[0].#subform[16].Pt8Line51_YesNo[1]": true
+  "form1[0].#subform[16].Pt8Line52_YesNo[0]": false
+  "form1[0].#subform[16].Pt8Line52_YesNo[1]": true
+  "form1[0].#subform[16].Pt8Line53a_YesNo[0]": false
+  "form1[0].#subform[16].Pt8Line53a_YesNo[1]": true
+  "form1[0].#subform[16].Pt8Line53b_YesNo[0]": false
+  "form1[0].#subform[16].Pt8Line53b_YesNo[1]": true
+  "form1[0].#subform[16].Pt8Line53c_YesNo[0]": false
+  "form1[0].#subform[16].Pt8Line53c_YesNo[1]": true
+  "form1[0].#subform[16].Pt8Line53d_YesNo[0]": false
+  "form1[0].#subform[16].Pt8Line53d_YesNo[1]": true
+  "form1[0].#subform[16].Pt8Line54_YesNo[0]": false
+  "form1[0].#subform[16].Pt8Line54_YesNo[1]": true
+  "form1[0].#subform[16].Pt8Line55_YesNo[0]": false
+  "form1[0].#subform[16].Pt8Line55_YesNo[1]": true
+
+# ------------------------------------------------------------------
+# PAGES 18-19 — Part 9: Affidavit of Support / Public Charge
+# (form1[0].#subform[17] and #subform[18])
+# ------------------------------------------------------------------
+page18:
+  "form1[0].#subform[17].AlienNumber[17]": "A000000000"
+  # Part 9 Line 56 — receipt of public benefits checkboxes [0]-[21]
+  # Check all public benefits received since admission as refugee:
+  # [0]=Supplemental Security Income (SSI)
+  # [1]=TANF (cash assistance)
+  # [2]=Medicaid (non-emergency)
+  # [3]=SNAP (food stamps)
+  # [4]=Section 8 housing
+  # ... etc. (consult form instructions for full mapping)
+  # For most recently arrived refugees, leave all false
+  "form1[0].#subform[17].Pt9Line56_CB[0]": false
+  "form1[0].#subform[17].Pt9Line56_CB[1]": false
+  "form1[0].#subform[17].Pt9Line56_CB[2]": false
+  "form1[0].#subform[17].Pt9Line56_CB[3]": false
+  "form1[0].#subform[17].Pt9Line56_CB[4]": false
+  "form1[0].#subform[17].Pt9Line56_CB[5]": false
+  "form1[0].#subform[17].Pt9Line56_CB[6]": false
+  "form1[0].#subform[17].Pt9Line56_CB[7]": false
+  "form1[0].#subform[17].Pt9Line56_CB[8]": false
+  "form1[0].#subform[17].Pt9Line56_CB[9]": false
+  "form1[0].#subform[17].Pt9Line56_CB[10]": false
+  "form1[0].#subform[17].Pt9Line56_CB[11]": false
+  "form1[0].#subform[17].Pt9Line56_CB[12]": false
+  "form1[0].#subform[17].Pt9Line56_CB[13]": false
+  "form1[0].#subform[17].Pt9Line56_CB[14]": false
+  "form1[0].#subform[17].Pt9Line56_CB[15]": false
+  "form1[0].#subform[17].Pt9Line56_CB[16]": false
+  "form1[0].#subform[17].Pt9Line56_CB[17]": false
+  "form1[0].#subform[17].Pt9Line56_CB[18]": false
+  "form1[0].#subform[17].Pt9Line56_CB[19]": false
+  "form1[0].#subform[17].Pt9Line56_CB[20]": false
+  "form1[0].#subform[17].Pt9Line56_CB[21]": false
+
+page19:
+  "form1[0].#subform[18].AlienNumber[18]": "A000000000"
+  "form1[0].#subform[18].Pt9Line56_CB[22]": false
+  "form1[0].#subform[18].Pt9Line56_CB[23]": false
+  "form1[0].#subform[18].Pt9Line56_CB[24]": false
+
+  # Household size
+  "form1[0].#subform[18].Pt9Line57_HouseholdSize[0]": "1"
+
+  # Diploma / degree earned
+  "form1[0].#subform[18].Pt9Line61_diploma[0]": ""
+
+  # Education level: [0]=No schooling, [1]=Some elem, [2]=Elem,
+  # [3]=Some HS, [4]=HS diploma/GED, [5]=Some college, [6]=Associate,
+  # [7]=Bachelor's
+  "form1[0].#subform[18].Pt9Line61_CB[0]": false
+  "form1[0].#subform[18].Pt9Line61_CB[1]": false
+  "form1[0].#subform[18].Pt9Line61_CB[2]": false
+  "form1[0].#subform[18].Pt9Line61_CB[3]": false
+  "form1[0].#subform[18].Pt9Line61_CB[4]": true    # HS diploma/GED
+  "form1[0].#subform[18].Pt9Line61_CB[5]": false
+  "form1[0].#subform[18].Pt9Line61_CB[6]": false
+  "form1[0].#subform[18].Pt9Line61_CB[7]": false
+
+  # Current employment status
+  "form1[0].#subform[18].Pt9Line59_CB[0]": true    # Employed full time
+  "form1[0].#subform[18].Pt9Line59_CB[1]": false   # Employed part time
+  "form1[0].#subform[18].Pt9Line59_CB[2]": false   # Unemployed
+  "form1[0].#subform[18].Pt9Line59_CB[3]": false   # Retired
+  "form1[0].#subform[18].Pt9Line59_CB[4]": false   # Not in labor force
+
+  # Language skills
+  "form1[0].#subform[18].Pt9Line60_CB[0]": true    # English
+  "form1[0].#subform[18].Pt9Line60_CB[1]": false
+  "form1[0].#subform[18].Pt9Line60_CB[2]": false
+  "form1[0].#subform[18].Pt9Line60_CB[3]": false
+  "form1[0].#subform[18].Pt9Line60_CB[4]": false
+
+  # AoS (Affidavit of Support) questions
+  "form1[0].#subform[18].Pt9Line63_YesNo[0]": false
+  "form1[0].#subform[18].Pt9Line63_YesNo[1]": true
+  "form1[0].#subform[18].Pt9Line64_YesNo[0]": false
+  "form1[0].#subform[18].Pt9Line64_YesNo[1]": true
+
+  # Sponsor info table (if AoS required)
+  "form1[0].#subform[18].Table1[0].Row1[0].TextField1[0]": ""
+  "form1[0].#subform[18].Table1[0].Row2[0].TextField2[0]": ""
+  "form1[0].#subform[18].Table1[0].Row3[0].TextField3[0]": ""
+  "form1[0].#subform[18].Table1[0].Row4[0].TextField4[0]": ""
+  "form1[0].#subform[18].Table1[0].Row5[0].TextField5[0]": ""
+  "form1[0].#subform[18].Table1[0].Row6[0].TextField6[0]": ""
+  "form1[0].#subform[18].Table1[0].Row7[0].TextField7[0]": ""
+  "form1[0].#subform[18].Table1[0].Row8[0].TextField8[0]": ""
+
+  # Disability-related public benefit checkboxes
+  "form1[0].#subform[18].Pt9Line53_CB[0]": false
+  "form1[0].#subform[18].Pt9Line53_CB[1]": false
+  "form1[0].#subform[18].Pt9Line53_CB[2]": false
+  "form1[0].#subform[18].Pt9Line53_CB[3]": false
+  "form1[0].#subform[18].Pt9Line53_CB[4]": false
+
+# ------------------------------------------------------------------
+# PAGES 22-23 — Contact info, signature, interpreter, preparer
+# (form1[0].#subform[22] and #subform[23])
+# ------------------------------------------------------------------
+page22:
+  "form1[0].#subform[22].AlienNumber[21]": "A000000000"
+
+  # Applicant contact information
+  "form1[0].#subform[22].P3_Line4_DaytimeTelePhoneNumber[0]": "555-555-5555"
+  "form1[0].#subform[22].P3_Line5_MobileTelePhoneNumber[0]": ""
+  "form1[0].#subform[22].P3_Line6_Email[0]": "applicant@example.com"
+
+  # Interpreter information (fill only if interpreter assisted applicant)
+  "form1[0].#subform[22].Pt11Line1a_FamilyName[0]": ""
+  "form1[0].#subform[22].Pt11Line1b_GivenName[0]": ""
+  "form1[0].#subform[22].Pt11Line2_OrgName[0]": ""
+  "form1[0].#subform[22].Part11_NameofLanguage[0]": ""
+  "form1[0].#subform[22].Pt3Line3_DaytimePhoneNumber1[0]": ""
+  "form1[0].#subform[22].Pt3Line4_MobileNumber1[0]": ""
+  "form1[0].#subform[22].Pt3Line5_Email[0]": ""
+  # Interpreter signature date (MM/DD/YYYY)
+  "form1[0].#subform[22].Pt3Line7b_DateofSignature[0]": ""
+
+  # Applicant date of signature (MM/DD/YYYY) — leave blank for hand-signing
+  "form1[0].#subform[22].P13_DateofSignature[0]": "03/03/2026"
+
+page23:
+  "form1[0].#subform[23].AlienNumber[22]": "A000000000"
+
+  # Preparer information (the person who filled the form, if not the applicant)
+  "form1[0].#subform[23].Pt12Line1_PreparerFamilyName[0]": "HELPER LAST"
+  "form1[0].#subform[23].Pt12Line1a_PreparerGivenName[0]": "HELPER FIRST"
+  "form1[0].#subform[23].Pt12Line2_BusinessName[0]": "Refugee Aid Organization"
+  "form1[0].#subform[23].Pt12Line3_PreparerDaytimePhoneNumber1[0]": "555-555-1234"
+  "form1[0].#subform[23].Pt12Line4_PreparerMobileNumber[0]": ""
+  "form1[0].#subform[23].Pt12Line5_PreparerEmail[0]": "helper@org.example"
+  # Preparer signature date
+  "form1[0].#subform[23].P12Line6a_DateofSignature[0]": "03/03/2026"

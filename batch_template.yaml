@@ -1,0 +1,398 @@
+# ============================================================
+# Batch Mode Template — Multiple I-485 Applicants
+# Field names verified against USCIS I-485 (edition 09/17/19)
+# ============================================================
+# Usage:
+#   python fill_i485.py fill --input blank_i485.pdf \
+#       --data batch_template.yaml --batch --outdir ./filled/
+#
+# Each applicant entry contains only the fields that vary
+# per person. For a complete filing include all sections
+# from applicant_template.yaml in each entry.
+#
+# Marital status index:  [0]=Single [1]=Married [2]=Divorced
+#                        [3]=Widowed [4]=Separated [5]=Annulled
+# Sex index:             [0]=Male  [1]=Female
+# Ethnicity index:       [0]=Hispanic  [1]=Not Hispanic
+# Race index:            [0]=White [1]=Asian [2]=Black
+#                        [3]=AIAN  [4]=NHPI
+# Eye color index:       [0]=Black [1]=Blue [2]=Brown [3]=Gray
+#                        [4]=Green [5]=Hazel [6]=Maroon [7]=Pink
+#                        [8]=Unknown/Other
+# Hair color index:      [0]=Bald [1]=Black [2]=Blond [3]=Brown
+#                        [4]=Gray [5]=Red/Auburn [6]=Sandy
+#                        [7]=White [8]=Unknown/Other
+# ============================================================
+
+applicants:
+
+  # ----------------------------------------------------------
+  # Applicant 1: IBRAHIM, AMINA — Somali refugee, married
+  # ----------------------------------------------------------
+  - personal:
+      "form1[0].#subform[0].Pt1Line1_FamilyName[0]": "IBRAHIM"
+      "form1[0].#subform[0].Pt1Line1_GivenName[0]": "AMINA"
+      "form1[0].#subform[0].Pt1Line1_MiddleName[0]": ""
+      "form1[0].#subform[0].AlienNumber[0]": "A111111111"
+      "form1[0].#subform[0].VolagNumber[0]": "LIRS01"
+      "form1[0].#subform[0].Pt1Line3_DOB[0]": "05/12/1988"
+      "form1[0].#subform[0].Pt1Line3_YN[0]": false
+      "form1[0].#subform[0].Pt1Line3_YN[1]": true
+
+    page2:
+      "form1[0].#subform[1].AlienNumber[1]": "A111111111"
+      # Sex: Female
+      "form1[0].#subform[1].Pt1Line6_CB_Sex[0]": false
+      "form1[0].#subform[1].Pt1Line6_CB_Sex[1]": true
+      "form1[0].#subform[1].Pt1Line7_CityTownOfBirth[0]": "Mogadishu"
+      "form1[0].#subform[1].Pt1Line7_CountryOfBirth[0]": "Somalia"
+      "form1[0].#subform[1].Pt1Line8_CountryofCitizenshipNationality[0]": "Somalia"
+      "form1[0].#subform[1].Pt1Line9_USCISAccountNumber[0]": ""
+      "form1[0].#subform[1].Pt1Line4_YN[0]": false
+      "form1[0].#subform[1].Pt1Line4_YN[1]": true
+      "form1[0].#subform[1].Pt1Line5_YN[0]": false
+      "form1[0].#subform[1].Pt1Line5_YN[1]": true
+      "form1[0].#subform[1].Pt1Line10_DateofArrival[0]": "03/10/2024"
+      "form1[0].#subform[1].Pt1Line10_CityTown[0]": "Minneapolis"
+      "form1[0].#subform[1].Pt1Line10_State[0]": "MN"
+      "form1[0].#subform[1].Pt1Line11_Admitted[0]": "Refugee"
+      "form1[0].#subform[1].Pt1Line10_ExpDate[0]": "D/S"
+      "form1[0].#subform[1].Pt1Line10_VisaNum[0]": ""
+      "form1[0].#subform[1].Pt1Line10_PassportNum[0]": ""
+      "form1[0].#subform[1].Pt1Line10_Passport[0]": ""
+
+    page3:
+      "form1[0].#subform[2].AlienNumber[2]": "A111111111"
+      "form1[0].#subform[2].P1Line12_I94[0]": "98765432100"
+      "form1[0].#subform[2].Part1_Item18_InCareOfName[0]": ""
+      "form1[0].#subform[2].Pt1Line18_CurrentStreetNumberName[0]": "10 Elm Street"
+      "form1[0].#subform[2].Pt1Line18_CurrentUnit[0]": false
+      "form1[0].#subform[2].Pt1Line18_CurrentUnit[1]": false
+      "form1[0].#subform[2].Pt1Line18_CurrentUnit[2]": false
+      "form1[0].#subform[2].Pt1Line18_CurrentAptSteFlrNumber[0]": "Apt 3"
+      "form1[0].#subform[2].Pt1Line18_CurrentCityOrTown[0]": "Minneapolis"
+      "form1[0].#subform[2].Pt1Line18_CurrentState[0]": "MN"
+      "form1[0].#subform[2].Pt1Line18_CurrentZipCode[0]": "55401"
+      "form1[0].#subform[2].Pt1Line18_YN[0]": true
+      "form1[0].#subform[2].Pt1Line18_YN[1]": false
+      "form1[0].#subform[2].Pt1Line13_YN[0]": false
+      "form1[0].#subform[2].Pt1Line13_YN[1]": true
+      "form1[0].#subform[2].Pt1Line16_YN[0]": false
+      "form1[0].#subform[2].Pt1Line16_YN[1]": true
+      "form1[0].#subform[2].Pt1Line17_YN[0]": false
+      "form1[0].#subform[2].Pt1Line17_YN[1]": true
+
+    page3_ssa:
+      "form1[0].#subform[3].AlienNumber[3]": "A111111111"
+      "form1[0].#subform[3].Pt1Line19_Consent_YN[0]": true
+      "form1[0].#subform[3].Pt1Line19_Consent_YN[1]": false
+      "form1[0].#subform[3].Pt1Line19_YN[0]": false
+      "form1[0].#subform[3].Pt1Line19_YN[1]": true
+      "form1[0].#subform[3].Pt1Line19_SSA_YN[0]": true
+      "form1[0].#subform[3].Pt1Line19_SSA_YN[1]": false
+      "form1[0].#subform[3].Pt1Line18_last5yrs_YN[0]": false
+      "form1[0].#subform[3].Pt1Line18_last5yrs_YN[1]": true
+
+    refugee_eligibility:
+      "form1[0].#subform[4].AlienNumber[4]": "A111111111"
+      "form1[0].#subform[4].Pt2Line1_YN[0]": false
+      "form1[0].#subform[4].Pt2Line1_YN[1]": true
+      "form1[0].#subform[5].AlienNumber[5]": "A111111111"
+      "form1[0].#subform[6].AlienNumber[6]": "A111111111"
+      # Refugee (not asylee)
+      "form1[0].#subform[6].Pt2Line3d_AsyleeRefugeeCB[0]": false
+      "form1[0].#subform[6].Pt2Line3d_AsyleeRefugeeCB[1]": true
+      "form1[0].#subform[6].Pt2Line3d_Refugee[0]": "03/10/2024"
+      "form1[0].#subform[6].Pt2Line3d_Asylum[0]": ""
+      "form1[0].#subform[6].Pt2Line4_CB[0]": false
+      "form1[0].#subform[6].Pt2Line4_CB[1]": true
+      "form1[0].#subform[6].Pt2Line5_CB[0]": false
+      "form1[0].#subform[6].Pt2Line5_CB[1]": true
+
+    processing:
+      "form1[0].#subform[7].AlienNumber[7]": "A111111111"
+      # Part 3: Refugee processing country
+      "form1[0].#subform[7].Pt3Line1_CB[4]": true
+      "form1[0].#subform[7].Pt4Line1_YN[0]": false
+      "form1[0].#subform[7].Pt4Line1_YN[1]": true
+      "form1[0].#subform[7].Pt4Line5_YN[0]": false
+      "form1[0].#subform[7].Pt4Line5_YN[1]": true
+      "form1[0].#subform[7].Pt4Line6_YN[0]": false
+      "form1[0].#subform[7].Pt4Line6_YN[1]": true
+
+    parents:
+      "form1[0].#subform[8].AlienNumber[8]": "A111111111"
+      "form1[0].#subform[8].Pt5Line1_FamilyName[0]": "IBRAHIM"
+      "form1[0].#subform[8].Pt5Line1_GivenName[0]": "FADUMO"
+      "form1[0].#subform[8].Pt5Line1_MiddleName[0]": ""
+      "form1[0].#subform[8].Pt5Line2_FamilyName[0]": "IBRAHIM"
+      "form1[0].#subform[8].Pt5Line2_GivenName[0]": "HASSAN"
+      "form1[0].#subform[8].Pt5Line2_MiddleName[0]": ""
+
+    marital:
+      "form1[0].#subform[9].AlienNumber[9]": "A111111111"
+      # Married
+      "form1[0].#subform[9].Pt6Line1_MaritalStatus[0]": false
+      "form1[0].#subform[9].Pt6Line1_MaritalStatus[1]": true
+      "form1[0].#subform[9].Pt6Line1_MaritalStatus[2]": false
+      "form1[0].#subform[9].Pt6Line1_MaritalStatus[3]": false
+      "form1[0].#subform[9].Pt6Line1_MaritalStatus[4]": false
+      "form1[0].#subform[9].Pt6Line1_MaritalStatus[5]": false
+      "form1[0].#subform[9].Pt6Line3_TimesMarried[0]": "1"
+      "form1[0].#subform[9].Pt6Line4_FamilyName[0]": "OMAR"
+      "form1[0].#subform[9].Pt6Line4_GivenName[0]": "ABDI"
+      "form1[0].#subform[9].Pt6Line4_MiddleName[0]": ""
+      "form1[0].#subform[9].Pt5Line2_YNNA[0]": true
+      "form1[0].#subform[9].Pt5Line2_YNNA[1]": false
+      "form1[0].#subform[9].Pt5Line2_YNNA[2]": false
+
+    children:
+      "form1[0].#subform[11].AlienNumber[11]": "A111111111"
+      "form1[0].#subform[11].Pt6Line1_TotalChildren[0]": "2"
+      "form1[0].#subform[11].Pt7Line2_FamilyName[0]": "OMAR"
+      "form1[0].#subform[11].Pt7Line2_GivenName[0]": "SAFIA"
+      "form1[0].#subform[11].Pt7Line2_DateofBirth[0]": "06/15/2015"
+      "form1[0].#subform[11].Pt7Line2_Country[0]": "Somalia"
+      "form1[0].#subform[11].Pt7Line2_Relationship[0]": "Daughter"
+      "form1[0].#subform[11].Pt7Line2_YN[0]": true
+      "form1[0].#subform[11].Pt7Line2_YN[1]": false
+      "form1[0].#subform[11].Pt7Line3_FamilyName[0]": "OMAR"
+      "form1[0].#subform[11].Pt7Line3_GivenName[0]": "YUSUF"
+      "form1[0].#subform[11].Pt7Line3_DateofBirth[0]": "02/20/2018"
+      "form1[0].#subform[11].Pt7Line3_Country[0]": "Somalia"
+      "form1[0].#subform[11].Pt7Line3_Relationship[0]": "Son"
+      "form1[0].#subform[11].Pt7Line3_YN[0]": true
+      "form1[0].#subform[11].Pt7Line3_YN[1]": false
+
+    biographic:
+      "form1[0].#subform[12].AlienNumber[12]": "A111111111"
+      # Not Hispanic
+      "form1[0].#subform[12].Pt7Line1_Ethnicity[0]": false
+      "form1[0].#subform[12].Pt7Line1_Ethnicity[1]": true
+      # Black / African American
+      "form1[0].#subform[12].Pt7Line2_Race[0]": false
+      "form1[0].#subform[12].Pt7Line2_Race[1]": false
+      "form1[0].#subform[12].Pt7Line2_Race[2]": true
+      "form1[0].#subform[12].Pt7Line2_Race[3]": false
+      "form1[0].#subform[12].Pt7Line2_Race[4]": false
+      "form1[0].#subform[12].Pt7Line3_HeightFeet[0]": "5"
+      "form1[0].#subform[12].Pt7Line3_HeightInches[0]": "4"
+      "form1[0].#subform[12].Pt7Line4_Weight1[0]": "1"
+      "form1[0].#subform[12].Pt7Line4_Weight2[0]": "3"
+      "form1[0].#subform[12].Pt7Line4_Weight3[0]": "0"
+      # Brown eyes
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[0]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[1]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[2]": true
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[3]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[4]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[5]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[6]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[7]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[8]": false
+      # Black hair
+      "form1[0].#subform[12].Pt7Line6_Haircolor[0]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[1]": true
+      "form1[0].#subform[12].Pt7Line6_Haircolor[2]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[3]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[4]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[5]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[6]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[7]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[8]": false
+      "form1[0].#subform[12].Pt8Line1_YesNo[0]": false
+      "form1[0].#subform[12].Pt8Line1_YesNo[1]": true
+
+    contact:
+      "form1[0].#subform[22].AlienNumber[21]": "A111111111"
+      "form1[0].#subform[22].P3_Line4_DaytimeTelePhoneNumber[0]": "612-555-0101"
+      "form1[0].#subform[22].P3_Line5_MobileTelePhoneNumber[0]": ""
+      "form1[0].#subform[22].P3_Line6_Email[0]": ""
+      "form1[0].#subform[22].P13_DateofSignature[0]": "03/03/2026"
+
+    preparer:
+      "form1[0].#subform[23].AlienNumber[22]": "A111111111"
+      "form1[0].#subform[23].Pt12Line1_PreparerFamilyName[0]": "HELPER LAST"
+      "form1[0].#subform[23].Pt12Line1a_PreparerGivenName[0]": "HELPER FIRST"
+      "form1[0].#subform[23].Pt12Line2_BusinessName[0]": "Refugee Aid Organization"
+      "form1[0].#subform[23].Pt12Line3_PreparerDaytimePhoneNumber1[0]": "555-555-1234"
+      "form1[0].#subform[23].Pt12Line5_PreparerEmail[0]": "helper@org.example"
+      "form1[0].#subform[23].P12Line6a_DateofSignature[0]": "03/03/2026"
+
+  # ----------------------------------------------------------
+  # Applicant 2: NGUYEN, THAI VAN — Vietnamese refugee, single
+  # ----------------------------------------------------------
+  - personal:
+      "form1[0].#subform[0].Pt1Line1_FamilyName[0]": "NGUYEN"
+      "form1[0].#subform[0].Pt1Line1_GivenName[0]": "THAI"
+      "form1[0].#subform[0].Pt1Line1_MiddleName[0]": "VAN"
+      "form1[0].#subform[0].AlienNumber[0]": "A222222222"
+      "form1[0].#subform[0].VolagNumber[0]": "IRC02"
+      "form1[0].#subform[0].Pt1Line3_DOB[0]": "11/30/1995"
+      "form1[0].#subform[0].Pt1Line3_YN[0]": false
+      "form1[0].#subform[0].Pt1Line3_YN[1]": true
+
+    page2:
+      "form1[0].#subform[1].AlienNumber[1]": "A222222222"
+      # Sex: Male
+      "form1[0].#subform[1].Pt1Line6_CB_Sex[0]": true
+      "form1[0].#subform[1].Pt1Line6_CB_Sex[1]": false
+      "form1[0].#subform[1].Pt1Line7_CityTownOfBirth[0]": "Ho Chi Minh City"
+      "form1[0].#subform[1].Pt1Line7_CountryOfBirth[0]": "Vietnam"
+      "form1[0].#subform[1].Pt1Line8_CountryofCitizenshipNationality[0]": "Vietnam"
+      "form1[0].#subform[1].Pt1Line9_USCISAccountNumber[0]": ""
+      "form1[0].#subform[1].Pt1Line4_YN[0]": false
+      "form1[0].#subform[1].Pt1Line4_YN[1]": true
+      "form1[0].#subform[1].Pt1Line5_YN[0]": false
+      "form1[0].#subform[1].Pt1Line5_YN[1]": true
+      "form1[0].#subform[1].Pt1Line10_DateofArrival[0]": "07/22/2024"
+      "form1[0].#subform[1].Pt1Line10_CityTown[0]": "Seattle"
+      "form1[0].#subform[1].Pt1Line10_State[0]": "WA"
+      "form1[0].#subform[1].Pt1Line11_Admitted[0]": "Refugee"
+      "form1[0].#subform[1].Pt1Line10_ExpDate[0]": "D/S"
+      "form1[0].#subform[1].Pt1Line10_VisaNum[0]": ""
+      "form1[0].#subform[1].Pt1Line10_PassportNum[0]": ""
+      "form1[0].#subform[1].Pt1Line10_Passport[0]": ""
+
+    page3:
+      "form1[0].#subform[2].AlienNumber[2]": "A222222222"
+      "form1[0].#subform[2].P1Line12_I94[0]": "11223344556"
+      "form1[0].#subform[2].Part1_Item18_InCareOfName[0]": ""
+      "form1[0].#subform[2].Pt1Line18_CurrentStreetNumberName[0]": "55 Oak Avenue"
+      "form1[0].#subform[2].Pt1Line18_CurrentUnit[0]": false
+      "form1[0].#subform[2].Pt1Line18_CurrentUnit[1]": false
+      "form1[0].#subform[2].Pt1Line18_CurrentUnit[2]": false
+      "form1[0].#subform[2].Pt1Line18_CurrentAptSteFlrNumber[0]": ""
+      "form1[0].#subform[2].Pt1Line18_CurrentCityOrTown[0]": "Seattle"
+      "form1[0].#subform[2].Pt1Line18_CurrentState[0]": "WA"
+      "form1[0].#subform[2].Pt1Line18_CurrentZipCode[0]": "98101"
+      "form1[0].#subform[2].Pt1Line18_YN[0]": true
+      "form1[0].#subform[2].Pt1Line18_YN[1]": false
+      "form1[0].#subform[2].Pt1Line13_YN[0]": false
+      "form1[0].#subform[2].Pt1Line13_YN[1]": true
+      "form1[0].#subform[2].Pt1Line16_YN[0]": false
+      "form1[0].#subform[2].Pt1Line16_YN[1]": true
+      "form1[0].#subform[2].Pt1Line17_YN[0]": false
+      "form1[0].#subform[2].Pt1Line17_YN[1]": true
+
+    page3_ssa:
+      "form1[0].#subform[3].AlienNumber[3]": "A222222222"
+      "form1[0].#subform[3].Pt1Line19_Consent_YN[0]": true
+      "form1[0].#subform[3].Pt1Line19_Consent_YN[1]": false
+      "form1[0].#subform[3].Pt1Line19_YN[0]": false
+      "form1[0].#subform[3].Pt1Line19_YN[1]": true
+      "form1[0].#subform[3].Pt1Line19_SSA_YN[0]": true
+      "form1[0].#subform[3].Pt1Line19_SSA_YN[1]": false
+      "form1[0].#subform[3].Pt1Line18_last5yrs_YN[0]": false
+      "form1[0].#subform[3].Pt1Line18_last5yrs_YN[1]": true
+
+    refugee_eligibility:
+      "form1[0].#subform[4].AlienNumber[4]": "A222222222"
+      "form1[0].#subform[4].Pt2Line1_YN[0]": false
+      "form1[0].#subform[4].Pt2Line1_YN[1]": true
+      "form1[0].#subform[5].AlienNumber[5]": "A222222222"
+      "form1[0].#subform[6].AlienNumber[6]": "A222222222"
+      "form1[0].#subform[6].Pt2Line3d_AsyleeRefugeeCB[0]": false
+      "form1[0].#subform[6].Pt2Line3d_AsyleeRefugeeCB[1]": true
+      "form1[0].#subform[6].Pt2Line3d_Refugee[0]": "07/22/2024"
+      "form1[0].#subform[6].Pt2Line3d_Asylum[0]": ""
+      "form1[0].#subform[6].Pt2Line4_CB[0]": false
+      "form1[0].#subform[6].Pt2Line4_CB[1]": true
+      "form1[0].#subform[6].Pt2Line5_CB[0]": false
+      "form1[0].#subform[6].Pt2Line5_CB[1]": true
+
+    processing:
+      "form1[0].#subform[7].AlienNumber[7]": "A222222222"
+      "form1[0].#subform[7].Pt3Line1_CB[4]": true
+      "form1[0].#subform[7].Pt4Line1_YN[0]": false
+      "form1[0].#subform[7].Pt4Line1_YN[1]": true
+      "form1[0].#subform[7].Pt4Line5_YN[0]": false
+      "form1[0].#subform[7].Pt4Line5_YN[1]": true
+      "form1[0].#subform[7].Pt4Line6_YN[0]": false
+      "form1[0].#subform[7].Pt4Line6_YN[1]": true
+
+    parents:
+      "form1[0].#subform[8].AlienNumber[8]": "A222222222"
+      "form1[0].#subform[8].Pt5Line1_FamilyName[0]": "NGUYEN"
+      "form1[0].#subform[8].Pt5Line1_GivenName[0]": "THI HOA"
+      "form1[0].#subform[8].Pt5Line1_MiddleName[0]": ""
+      "form1[0].#subform[8].Pt5Line2_FamilyName[0]": "NGUYEN"
+      "form1[0].#subform[8].Pt5Line2_GivenName[0]": "MINH DUC"
+      "form1[0].#subform[8].Pt5Line2_MiddleName[0]": ""
+
+    marital:
+      "form1[0].#subform[9].AlienNumber[9]": "A222222222"
+      # Single
+      "form1[0].#subform[9].Pt6Line1_MaritalStatus[0]": true
+      "form1[0].#subform[9].Pt6Line1_MaritalStatus[1]": false
+      "form1[0].#subform[9].Pt6Line1_MaritalStatus[2]": false
+      "form1[0].#subform[9].Pt6Line1_MaritalStatus[3]": false
+      "form1[0].#subform[9].Pt6Line1_MaritalStatus[4]": false
+      "form1[0].#subform[9].Pt6Line1_MaritalStatus[5]": false
+      "form1[0].#subform[9].Pt6Line3_TimesMarried[0]": "0"
+      "form1[0].#subform[9].Pt5Line2_YNNA[0]": false
+      "form1[0].#subform[9].Pt5Line2_YNNA[1]": false
+      "form1[0].#subform[9].Pt5Line2_YNNA[2]": true
+
+    children:
+      "form1[0].#subform[11].AlienNumber[11]": "A222222222"
+      "form1[0].#subform[11].Pt6Line1_TotalChildren[0]": "0"
+      "form1[0].#subform[11].Pt7Line2_YN[0]": false
+      "form1[0].#subform[11].Pt7Line2_YN[1]": true
+      "form1[0].#subform[11].Pt7Line3_YN[0]": false
+      "form1[0].#subform[11].Pt7Line3_YN[1]": true
+
+    biographic:
+      "form1[0].#subform[12].AlienNumber[12]": "A222222222"
+      # Not Hispanic
+      "form1[0].#subform[12].Pt7Line1_Ethnicity[0]": false
+      "form1[0].#subform[12].Pt7Line1_Ethnicity[1]": true
+      # Asian
+      "form1[0].#subform[12].Pt7Line2_Race[0]": false
+      "form1[0].#subform[12].Pt7Line2_Race[1]": true
+      "form1[0].#subform[12].Pt7Line2_Race[2]": false
+      "form1[0].#subform[12].Pt7Line2_Race[3]": false
+      "form1[0].#subform[12].Pt7Line2_Race[4]": false
+      "form1[0].#subform[12].Pt7Line3_HeightFeet[0]": "5"
+      "form1[0].#subform[12].Pt7Line3_HeightInches[0]": "7"
+      "form1[0].#subform[12].Pt7Line4_Weight1[0]": "1"
+      "form1[0].#subform[12].Pt7Line4_Weight2[0]": "5"
+      "form1[0].#subform[12].Pt7Line4_Weight3[0]": "5"
+      # Brown eyes
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[0]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[1]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[2]": true
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[3]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[4]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[5]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[6]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[7]": false
+      "form1[0].#subform[12].Pt7Line5_Eyecolor[8]": false
+      # Black hair
+      "form1[0].#subform[12].Pt7Line6_Haircolor[0]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[1]": true
+      "form1[0].#subform[12].Pt7Line6_Haircolor[2]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[3]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[4]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[5]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[6]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[7]": false
+      "form1[0].#subform[12].Pt7Line6_Haircolor[8]": false
+      "form1[0].#subform[12].Pt8Line1_YesNo[0]": false
+      "form1[0].#subform[12].Pt8Line1_YesNo[1]": true
+
+    contact:
+      "form1[0].#subform[22].AlienNumber[21]": "A222222222"
+      "form1[0].#subform[22].P3_Line4_DaytimeTelePhoneNumber[0]": "206-555-0202"
+      "form1[0].#subform[22].P3_Line5_MobileTelePhoneNumber[0]": ""
+      "form1[0].#subform[22].P3_Line6_Email[0]": "tnguyen@example.com"
+      "form1[0].#subform[22].P13_DateofSignature[0]": "03/03/2026"
+
+    preparer:
+      "form1[0].#subform[23].AlienNumber[22]": "A222222222"
+      "form1[0].#subform[23].Pt12Line1_PreparerFamilyName[0]": "HELPER LAST"
+      "form1[0].#subform[23].Pt12Line1a_PreparerGivenName[0]": "HELPER FIRST"
+      "form1[0].#subform[23].Pt12Line2_BusinessName[0]": "Refugee Aid Organization"
+      "form1[0].#subform[23].Pt12Line3_PreparerDaytimePhoneNumber1[0]": "555-555-1234"
+      "form1[0].#subform[23].Pt12Line5_PreparerEmail[0]": "helper@org.example"
+      "form1[0].#subform[23].P12Line6a_DateofSignature[0]": "03/03/2026"

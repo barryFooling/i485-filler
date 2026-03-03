@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+
+# blank form — download from uscis.gov/i-485
+blank_i485.pdf
+
+# generated output
+*.pdf
+filled/
